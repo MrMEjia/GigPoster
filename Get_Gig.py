@@ -66,12 +66,14 @@ def main():
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
 
     eventsResult = service.events().list(
-        calendarId='8n816rv7q7rfi4i42nddni80e0@group.calendar.google.com', timeMin=now, maxResults=10, singleEvents=True,
+        calendarId='8n816rv7q7rfi4i42nddni80e0@group.calendar.google.com', timeMin=now, maxResults=10,
+    singleEvents=True,
         orderBy='startTime').execute()
     events = eventsResult.get('items', [])
 
     today = datetime.date.today().isoformat()
-
+    
+    today_gigs = []
 
     if not events:
         pass
@@ -79,9 +81,11 @@ def main():
         date = event['start'].get('date')
         #start = event['start'].get('datetime', event['start'].get('date'))
         if date == today:
-            return event['summary']
+            today_gigs.append(event['summary'])
         else:
             continue
+    
+    return today_gigs
 
 
 #if __name__ == '__main__':
