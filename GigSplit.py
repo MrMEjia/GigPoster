@@ -21,7 +21,7 @@ def main(gig):
             if x in nums:
                 time += x
                 
-        phrase = '"' + name + "from " + time + '"'
+        phrase = name + "from " + time
         parsed.append(phrase)
     
     if len(parsed) < 2:
