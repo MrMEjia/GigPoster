@@ -4,15 +4,11 @@
 
 import Get_Gig
 import facePoster
+import GigSplit
 
 gig_list = Get_Gig.main()
 
-gig = ""
-
-if len(gig_list) > 1:
-    gig = gig_list[0] + " and " + gig_list[1]
-else:
-    gig = gig_list[0]
+gig = GigSplit.main(gig_list)
 
 if gig:
     msg = "Come on out for some live music. I will playing today at " + gig
