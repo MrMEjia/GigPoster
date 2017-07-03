@@ -8,11 +8,11 @@ Created on Fri Jun 16 23:17:55 2017
 
 
 
-def main(gig):
+def day(gigs):
     nums = "01234567890-"
     parsed = []
 
-    for g in gig:
+    for g in gigs:
         name = ""
         time = ""
         for x in g:
@@ -31,3 +31,21 @@ def main(gig):
             
     
     return(total)
+
+def week(gig):
+    nums = "01234567890-"
+    parsed = []
+
+    
+    name = ""
+    time = ""
+    for x in gig:
+        if x not in nums:
+            name += x
+        if x in nums:
+            time += x
+            
+    phrase = name + "from " + time
+    parsed.append(phrase)
+    
+    return parsed

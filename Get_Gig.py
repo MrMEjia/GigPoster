@@ -71,21 +71,25 @@ def main():
         orderBy='startTime').execute()
     events = eventsResult.get('items', [])
 
-    today = datetime.date.today().isoformat()
+    this_week = datetime.date.today().isocalendar()[1]
     
-    today_gigs = []
+    week_gigs = []
 
     if not events:
         pass
     for event in events:
         date = event['start'].get('date')
-        #start = event['start'].get('datetime', event['start'].get('date'))
-        if date == today:
-            today_gigs.append(event['summary'])
+        year, month, day = (int(x) for x in date.split('-'))    
+        dow = datetime.date(year, month, day).weekday()
+        week = datetime.date(year, month, day).isocalendar()[1]
+        day_name = datetime.date(year, month, day).strftime('%A')
+        gig_sum = (event["summary"], dow, day_name)
+        if week == this_week:
+            week_gigs.append(gig_sum)
         else:
             continue
     
-    return today_gigs
+    return week_gigs
 
 
 #if __name__ == '__main__':
