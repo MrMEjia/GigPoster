@@ -9,7 +9,7 @@ Created on Fri Jun 16 23:17:55 2017
 
 
 def day(gigs):
-    nums = "01234567890-"
+    nums = "01234567890-:"
     parsed = []
 
     for g in gigs:
