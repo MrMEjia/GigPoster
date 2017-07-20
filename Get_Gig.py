@@ -6,7 +6,7 @@ from apiclient import discovery
 import oauth2client
 from oauth2client import client
 from oauth2client import tools
-
+from config import google_calendar_id
 import datetime
 
 try:	
@@ -66,7 +66,7 @@ def main():
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
 
     eventsResult = service.events().list(
-        calendarId='8n816rv7q7rfi4i42nddni80e0@group.calendar.google.com', timeMin=now, maxResults=10,
+        calendarId= google_calendar_id, timeMin=now, maxResults=10,
     singleEvents=True,
         orderBy='startTime').execute()
     events = eventsResult.get('items', [])
