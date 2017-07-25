@@ -33,7 +33,7 @@ def day(gigs):
     return(total)
 
 def week(gig):
-    nums = "01234567890-"
+    nums = "01234567890-:"
     parsed = []
 
     
